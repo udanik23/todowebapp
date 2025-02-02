@@ -6,7 +6,7 @@ This is a web application (created for educational purposes) for managing a to-d
 
 ## Technologies
 
-- Java 17
+- Java
 - Spring Boot 3
 - Spring MVC
 - Thymeleaf (or React/Vue if the frontend is separate)
