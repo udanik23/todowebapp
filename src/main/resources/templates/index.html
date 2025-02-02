@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список дел</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Список дел</h1>
+    <form th:action="@{/add}" th:object="${newTodo}" method="post" class="mb-3">
+        <div class="input-group">
+            <input type="text" class="form-control" th:field="*{title}" placeholder="Внесите задачу">
+            <button class="btn btn-primary" type="submit">Добавить</button>
+        </div>
+    </form>
+
+    <form th:action="@{/removeAll}" method="post" class="text-center mb-4">
+        <button class="btn btn-danger" type="submit">Удалить все задачи</button>
+    </form>
+
+    <ul class="list-group">
+        <li th:each="item : ${allTodos}" class="list-group-item d-flex justify-content-between align-items-center">
+            <span th:text="${item.title}"></span>
+            <form th:action="@{/delete/{id}(id=${item.id})}" method="post">
+                <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+            </form>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
